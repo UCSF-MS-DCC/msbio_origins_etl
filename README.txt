@@ -29,6 +29,26 @@ most cases this is the same name as the api endpoint to post the data to. The lo
 
 STILL TO DO
 
-Modify the scripts to upload to production api database (change endpoint and credentials)
-Successfully upload the data to prod.msbioscreen.ucsf.edu (production database)
 Automate the extraction/upsertion process to run several times an hour.
+Find out why uploaded data points are not appearing in the bioscreen app (any version).
+
+OTHER NOTES
+
+This directory contains a .gitignore file to ensure that .csv files and vars.rb are not checked into github.
+
+To use the load scripts, you will need to create a file called vars.rb in the same directory as the load scripts. This is where you should place variable data such as urls and token data. DO NOT check this file into github!
+
+vars.rb variable format:
+
+@acceptance_base_url = "https://uat.champagne.ucsf.edu/"
+@prod_base_url = "https://prod.champagne.ucsf.edu/"
+
+@patients_url = "api/v1/subjects"
+@visits_url = "api/v1/visits"
+@attacks_url = "api/v1/attacks"
+@treatments_url = "api/v1/treatments"
+
+@acceptance_auth_token = "AUTH_TOKEN_GOES_HERE"
+@prod_auth_token = "AUTH_TOKEN_GOES_HERE"
+
+Note that the variable names are configured to work with the load scripts. The variable values are subject to change. Substitute your actual authorization token for AUTH_TOKEN_GOES_HERE.

@@ -1,1 +1,4 @@
 *.csv
+vars.rb
+source_csv_*
+first_data_extractions_for_uat
