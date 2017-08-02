@@ -3,7 +3,7 @@ require 'httparty'
 require_relative 'vars.rb'
 
 timestamp = Time.now.strftime('%b_%d_%Y')
-working_dir = "/Users/adamrenschen/Desktop/msbio_origins_etl/source_csv_08022017"
+working_dir = "#{@working_dir_base}#{@working_dir}"
 input_csv = "attacks.csv"
 log_filename = "attacks_log_#{timestamp}.txt"
 

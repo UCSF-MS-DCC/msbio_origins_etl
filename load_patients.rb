@@ -6,7 +6,7 @@ timestamp = Time.now.strftime('%b_%d_%Y')
 
 failed_ids = []
 successful_ids = []
-working_dir = "/Users/adamrenschen/Desktop/msbio_origins_etl/source_csv_08022017"
+working_dir = "#{@working_dir_base}#{@working_dir}"
 input_csv = "patients.csv"
 log_filename = "patients_log_#{timestamp}.txt"
 

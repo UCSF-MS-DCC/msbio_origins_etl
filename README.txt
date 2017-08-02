@@ -1,4 +1,4 @@
-ETL OF ORIGINS DATA POINTS FROM MSBASE TO MSBIOSCREEN - July 10, 2017
+ETL OF ORIGINS DATA POINTS FROM MSBASE TO MSBIOSCREEN - July 10, 2017 edited August 2, 2017
 
 The process of adding Origins patient data followed these steps:
 
@@ -6,9 +6,7 @@ The process of adding Origins patient data followed these steps:
 
 2) Sanity checking the query results in excel.
 
-3) Transforming null fields from \N to "" using the command line tool sed and miscellaneous manual cleanup of data.
-
-4) Parsing and uploading the data to the database via the msbioscreen api using ruby scripts.
+3) Parsing and uploading the data to the database via the msbioscreen api using ruby scripts.
 
 
 EXTRACTING DATA POINTS
@@ -40,8 +38,8 @@ To use the load scripts, you will need to create a file called vars.rb in the sa
 
 vars.rb variable format:
 
-@acceptance_base_url = "https://uat.champagne.ucsf.edu/"
-@prod_base_url = "https://prod.champagne.ucsf.edu/"
+@acceptance_base_url = "https://path/to/acceptance/url"
+@prod_base_url = "https://path/to/production/url"
 
 @patients_url = "api/v1/subjects"
 @visits_url = "api/v1/visits"
@@ -50,5 +48,10 @@ vars.rb variable format:
 
 @acceptance_auth_token = "AUTH_TOKEN_GOES_HERE"
 @prod_auth_token = "AUTH_TOKEN_GOES_HERE"
+
+@working_dir_base = absolute path of the local directory containing the folder with the csv files
+@working_dir = name of the directory containing the csv files to be loaded into the database
+
+
 
 Note that the variable names are configured to work with the load scripts. The variable values are subject to change. Substitute your actual authorization token for AUTH_TOKEN_GOES_HERE.
