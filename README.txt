@@ -16,7 +16,7 @@ Using the msbioscreen api documentation as a guide, I created sql queries to gat
 
 SANITY CHECKING AND TRANSFORMING NULL VALUES
 
-I manually spot checked values in the generated spreadsheets against the same data points in msbase to ensure accuracy. MySQL populates fields with a NULL value with \N. To ensure that a NULL value would be uploaded into the database, I used sed to replace \N with "" (empty string) ie: sed 's/\\N/""/g' filename > filename_reformatted. csv filenames ending in _reformatted.csv have been altered in this way.
+I manually spot checked values in the generated spreadsheets against the same data points in msbase to ensure accuracy. MySQL populates fields with a NULL value with \N. To ensure that a NULL value would be uploaded into the database, I used sed to replace \N with "" (empty string) ie: sed 's/\\N/""/g' filename > filename_reformatted. csv filenames ending in _reformatted.csv have been altered in this way. (Note, the extract_ files have been reworked to output empty strings in place of ‘\N’ for null values. Using sed should now be unnecessary)
 
 
 PARSING AND UPLOADING DATA
