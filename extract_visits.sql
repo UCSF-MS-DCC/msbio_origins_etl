@@ -66,8 +66,8 @@ ifnull(ol.vlcfa,'') as "vlcfa",
 ifnull(ol.lactateorpyruvate,'') as "lactate_pyruvate",
 ifnull(ol.upscreen,'') as "urine_porphyine_screen",
 ifnull(ol.cbc,'') as "complete_blood_count",
-2 as "patient_source_id",
-2 as "source_id"
+8 as "patient_source_id",
+8 as "source_id"
 from
 origins.subject_origins oso
 left join

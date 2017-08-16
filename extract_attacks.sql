@@ -18,8 +18,8 @@ ifnull(oa.lts,'') as "long_tract_sensory",
 ifnull(oa.unk,'') as "unknown_system_affected",
 ifnull(oa.steroids,'') as "steroids_used",
 ifnull(oa.fullyrecovered,'') as "fully_recovered",
-2 as patient_source_id,
-2 as source_id
+8 as patient_source_id,
+8 as source_id
 from
 origins.subject_origins oso
 join

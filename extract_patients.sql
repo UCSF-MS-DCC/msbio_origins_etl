@@ -5,7 +5,7 @@ select
 "overweight_as_adult", "overweight_as_older_adult", "years_of_education", "year_converted_rr_to_sp",
 "age_of_onset", "year_of_onset", "relapse_count_onset_to_year_5",
 "african_american", "caucasian", "hispanic", "asian_pacific", "special_population", "other_ethnicity",
-"birth_country", "maternal_birth_country", "paternal_birth_country", "smoking_start_age", "smoking_quit_age", "family_history", "gender"
+"birth_country", "maternal_birth_country", "paternal_birth_country", "smoking_start_age", "smoking_quit_age", "family_history", "gender", 'patient_identifier'
 union
 select
 right(sa.alias_term1, 4) as "external_identifier",
@@ -16,7 +16,7 @@ ifnull(sp.suffix, '') as "suffix",
 ifnull(sp.altlastname,'') as "alt_last_name",
 ifnull(sp.dob,'') as "dob",
 ifnull(samri.alias_term1,'') as "mri_ms_id",
-2 as "source_id",
+8 as "source_id",
 ifnull(os.drinkfreq,'') as "alcohol_weekly_frequency",
 ifnull(os.smokerstatus,'') as "smoker_status",
 ifnull(os.numcigs,'') as "cigarettes_per_day",
@@ -45,7 +45,8 @@ ifnull(sp.fatherbirthcountry,'') as "paternal_birth_country",
 '' as "smoking_start_age",
 '' as "smoking_quit_age",
 ifnull(sd.familyhxofms,'') as "family_history",
-ifnull(sd.gender,'') as "gender"
+ifnull(sd.gender,'') as "gender",
+ifnull(sam.alias_term1, '') as "patient_identifier"
 from
 origins.subject_origins oso
 left join
@@ -80,6 +81,10 @@ left join
 origins.attack oa
 on
 oso.subjectid = oa.subjectid
+left join
+subjects.aliases sam
+on
+sam.subjectid = oso.subjectid and sam.alias_type = "MRN"
 group by sa.alias_term1
 into outfile '/var/lib/mysql-files/origins_msbio_etl_patients.csv'
 fields terminated by ','

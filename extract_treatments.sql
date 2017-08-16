@@ -7,9 +7,9 @@ ifnull(rt.treatmenttype,'') as "name",
 ifnull(ot.startdate,'') as "start_date",
 ifnull(rt.class,'') as "category",
 ifnull(ot.dosage,'') as "dosage",
-2 as "patient_source_id",
+8 as "patient_source_id",
 right(sa.alias_term1, 4) as "patient_external_identifier",
-2 as "source_id",
+8 as "source_id",
 ifnull(ot.stoppedefficacy,'') as "treatment_stopped_due_to_efficacy"
 from
 origins.treatment ot
