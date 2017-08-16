@@ -45,7 +45,7 @@ csv.each do |row|
   #   row["patient_source_id"] = 2 # EPIC source id number.
   end
 
-  @response = HTTParty.post("#{@production_root_url}#{@treatments_url}", :body => row.to_hash.to_json, :headers => { 'Content-type':'application/json', 'Authorization':'Token token="c5809928-ebe8-4b7a-ae74-40e59b61f47b"'})
+  @response = HTTParty.post("#{@production_root_url}#{@treatments_url}", :body => row.to_hash.to_json, :headers => { 'Content-type':'application/json', 'Authorization':'Token token=""'})
 
   if @response.headers["status"] != "201 Created"
     failed_ids.push([row["external_identifier"], @response.headers["status"]])
