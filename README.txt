@@ -14,11 +14,6 @@ EXTRACTING DATA POINTS
 Using the msbioscreen api documentation as a guide, I created sql queries to gather the datapoints for uploading to the subjects, visits, attacks, and treatments endpoints. These files are named extract_modelname.
 
 
-SANITY CHECKING AND TRANSFORMING NULL VALUES
-
-I manually spot checked values in the generated spreadsheets against the same data points in msbase to ensure accuracy. MySQL populates fields with a NULL value with \N. To ensure that a NULL value would be uploaded into the database, I used sed to replace \N with "" (empty string) ie: sed 's/\\N/""/g' filename > filename_reformatted. csv filenames ending in _reformatted.csv have been altered in this way. (Note, the extract_ files have been reworked to output empty strings in place of ‘\N’ for null values. Using sed should now be unnecessary)
-
-
 PARSING AND UPLOADING DATA
 
 To upload the resulting .csv files, I created simple ruby scripts to parse the csv and upload the data row by row. This was achieved using the CSV and HTTParty gems. Each script parses the csv row by row and executes a post request to the appropriate api endpoint for the data points involved. I tried some elementary error handling, but removed it as it was not working as intended. All data so far has uploaded without problem. The scripts to upload data all have names that begin with load_ followed by the model name of the data. In
