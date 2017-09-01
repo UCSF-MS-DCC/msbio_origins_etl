@@ -2,5 +2,6 @@
 vars.rb
 source_csv_*
 first_data_extractions_for_uat
+update.visits.rb
 .DS_Store
 .gitignore
