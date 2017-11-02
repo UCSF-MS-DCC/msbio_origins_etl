@@ -106,7 +106,6 @@ left join
 subjects.aliases sa
 on
 oso.subjectid = sa.subjectid and sa.alias_type = "EPIC"
-order by patient_external_identifier, external_identifier
 into outfile '/var/lib/mysql-files/origins_msbio_etl_visits.csv'
 fields terminated by ','
 enclosed by '"'
